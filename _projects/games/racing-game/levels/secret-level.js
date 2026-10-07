@@ -29,7 +29,7 @@ class GameLevelSecret {
         upLeft:    { row: 2, start: 0, columns: 1, rotate: Math.PI },
         hitbox: { widthPercentage: 0.5, heightPercentage: 0.5 },
         keypress: { up: 87, left: 65, down: 83, right: 68 } // W, A, S, D
-    }
+    };
     const barrierData1 = {
       id: "barrier-2",
       coordinateSpace: "normalized",

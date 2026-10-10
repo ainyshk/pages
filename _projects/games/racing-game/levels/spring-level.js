@@ -16,9 +16,9 @@ class GameLevelSpring {
         name: "Red Car",
         greeting: "I'm the red car!",
         src: "/images/projects/racing-game/Directions_red_car.png",
-        SCALE_FACTOR: 10,
-        STEP_FACTOR: 1100,
         INIT_POSITION: { x: 340 / 740, y: 450 / 585},
+        SCALE_FACTOR: 20,
+        STEP_FACTOR: 1200,
         pixels: { height: 1024, width: 1536 },
         orientation: { rows: 4, columns: 4 },
         up:        { row: 3, start: 0, columns: 1 },
@@ -48,12 +48,22 @@ class GameLevelSpring {
       hitbox: { widthPercentage: 0.0, heightPercentage: 0.0 },
       fromOverlay: true,
     };
+    const player2_data = {
+        ...player_data,
+        name: "Blue Car",
+        greeting: "I'm the blue car!",
+        src: "/images/projects/racing-game/Directions_blue_car.png",
+        INIT_POSITION: { x: 0, y: 0.1 }, // start below the red car so they don't overlap
+        touchOptions: { interactLabel: "e", position: "right" },
+        keypress: { up: 38, left: 37, down: 40, right: 39 } // Arrow keys
+    }
     this.classes = [
         {class: GameEnvBackground, data: background_data},
         {class: Player, data: player_data},
+        {class: Player, data: player2_data},
         {class: SplineBarrier, data: barrierData1},
         {class: SplineBarrier, data: barrierData2},
-        {class: TimeLapScreen, data: { currentLap: 1, totalLaps: 3 }}
+    
     ]
   }
 }

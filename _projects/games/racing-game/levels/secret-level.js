@@ -32,6 +32,15 @@ class GameLevelSecret {
         hitbox: { widthPercentage: 0.5, heightPercentage: 0.5 },
         keypress: { up: 87, left: 65, down: 83, right: 68 } // W, A, S, D
     }
+    const player2_data = {
+        ...player_data,
+        name: "Blue Car",
+        greeting: "I'm the blue car!",
+        src: "/images/projects/racing-game/Directions_blue_car.png",
+        INIT_POSITION: { x: 0, y: 0.1 }, // start below the red car so they don't overlap
+        touchOptions: { interactLabel: "e", position: "right" },
+        keypress: { up: 38, left: 37, down: 40, right: 39 } // Arrow keys
+    }
     const barrierData1 = {
       id: "barrier-2",
       coordinateSpace: "normalized",
@@ -67,6 +76,7 @@ class GameLevelSecret {
     this.classes = [
         {class: GameEnvBackground, data: background_data},
         {class: Player, data: player_data},
+        {class: Player, data: player2_data},
         { class: SplineBarrier, data: barrierData1 },
         { class: SplineBarrier, data: barrierData2 },
         { class: SplineBarrier, data: barrierData3 },

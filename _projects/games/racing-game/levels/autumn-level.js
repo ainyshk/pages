@@ -10,13 +10,13 @@ class GameLevelAutumn {
     const background_data = {
       name: "Autumn Course",
       greeting: "Welcome to the Autumn Level!",
-      src: "/images/projects/racing-game/Autumn_Track.jpeg",
+      src: path + '/images/projects/racing-game/Autumn_Track.jpeg',
       pixels: { height: 360, width: 643 }
     };
     const player_data = {
         name: "Red Car",
         greeting: "I'm the red car!",
-        src: "/images/projects/racing-game/Directions_red_car.png",
+        src: path + '/images/projects/racing-game/Directions_red_car.png',
         SCALE_FACTOR: 10,
         STEP_FACTOR: 1100,
         INIT_POSITION: {x: 340 / 740, y: 500 / 585},
@@ -36,7 +36,7 @@ class GameLevelAutumn {
     const other_data = {
         name: "Blue Car",
         greeting: "I'm the blue car!",
-        src: "/images/projects/racing-game/Directions_blue_car.png",
+        src: path + '/images/projects/racing-game/Directions_blue_car.png',
         SCALE_FACTOR: 10,
         STEP_FACTOR: 1100,
         INIT_POSITION: {x: 340 / 740, y: 500 / 585},
@@ -71,7 +71,7 @@ class GameLevelAutumn {
     };
     const BoxData = {
       id: "box-1",
-      src: "/images/projects/racing-game/BoxObstacle.png",
+      src: path + '/images/projects/racing-game/BoxObstacle.png',
       coordinateSpace: "normalized",
       SCALE_FACTOR: 10,
       INIT_POSITION: { x: 0.47, y: 0.25 },

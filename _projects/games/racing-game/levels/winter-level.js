@@ -10,14 +10,14 @@ class GameLevelWinter {
     const background_data = {
       name: "Winter Course",
       greeting: "Welcome to the Winter Level!",
-      src: "/images/projects/racing-game/Winter_Track.png",
+      src: path + '/images/projects/racing-game/Winter_Track.png',
       pixels: { height: 360, width: 643 } //this is the old version im testing new sizes.
       
     };
     const player_data = {
         name: "Red Car",
         greeting: "I'm the red car!",
-        src: "/images/projects/racing-game/Directions_red_car.png",
+        src: path + '/images/projects/racing-game/Directions_red_car.png',
         SCALE_FACTOR: 10,
         STEP_FACTOR: 1100,
         INIT_POSITION: {x: 370 / 740, y: 465 / 585},
@@ -38,7 +38,7 @@ class GameLevelWinter {
         ...player_data,
         name: "Blue Car",
         greeting: "I'm the blue car!",
-        src: "/images/projects/racing-game/Directions_blue_car.png",
+        src: path + '/images/projects/racing-game/Directions_blue_car.png',
         INIT_POSITION: { x: 0, y: 0.1 }, // start below the red car so they don't overlap
         touchOptions: { interactLabel: "e", position: "right" },
         keypress: { up: 38, left: 37, down: 40, right: 39 } // Arrow keys

@@ -9,13 +9,13 @@ class GameLevelSpring {
     const background_data = {
       name: "Spring Course",
       greeting: "Welcome to the spring level!",
-      src: "/images/projects/racing-game/Spring_track.jpg",
+      src: path + '/images/projects/racing-game/Spring_track.jpg',
       pixels: { height: 360, width: 643 }
     };
     const player_data = {
         name: "Red Car",
         greeting: "I'm the red car!",
-        src: "/images/projects/racing-game/Directions_red_car.png",
+        src: path + '/images/projects/racing-game/Directions_red_car.png',
         INIT_POSITION: { x: 340 / 740, y: 450 / 585},
         SCALE_FACTOR: 20,
         STEP_FACTOR: 1200,
@@ -52,7 +52,7 @@ class GameLevelSpring {
         ...player_data,
         name: "Blue Car",
         greeting: "I'm the blue car!",
-        src: "/images/projects/racing-game/Directions_blue_car.png",
+        src: path + '/images/projects/racing-game/Directions_blue_car.png',
         INIT_POSITION: { x: 0, y: 0.1 }, // start below the red car so they don't overlap
         touchOptions: { interactLabel: "e", position: "right" },
         keypress: { up: 38, left: 37, down: 40, right: 39 } // Arrow keys

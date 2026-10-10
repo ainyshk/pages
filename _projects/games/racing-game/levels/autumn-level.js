@@ -88,7 +88,7 @@ class GameLevelAutumn {
       { class: SplineBarrier, data: barrierData1 },
       { class: SplineBarrier, data: barrierData2 },
       { class: Character, data: BoxData },
-      { class: TimeLapScreen, data: { currentLap: 1, totalLaps: 3 } }
+      { class: TimeLapScreen, data: { currentLap: 1, totalLaps: 3, } }
     ];
   }
 }

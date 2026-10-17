@@ -1,5 +1,5 @@
 import GameEnvBackground from '@assets/js/GameEnginev1.1/essentials/GameEnvBackground.js';
-import Player from '@assets/js/GameEnginev1.1/essentials/Player.js';
+import Player from './RacingPlayer.js';
 import SplineBarrier from '@assets/js/GameEnginev1.1/essentials/SplineBarrier.js';
 import TimeLapScreen from './TimeLapScreen.js';
 
@@ -35,7 +35,7 @@ class GameLevelSecret {
     const other_data = {
         name: "Blue Car",
         greeting: "I'm the blue car!",
-        src: path + '/images/projects/racing-game/Directions_blue_car.png',
+        src: path + '/images/projects/racing-game/Direction_blue_car.png',
         SCALE_FACTOR: 10,
         STEP_FACTOR: 1100,
         INIT_POSITION: {x: 340 / 740, y: 500 / 585},
@@ -50,7 +50,7 @@ class GameLevelSecret {
         left:      { row: 3, start: 2, columns: 1 },
         upLeft:    { row: 2, start: 0, columns: 1, rotate: Math.PI },
         hitbox: { widthPercentage: 0.5, heightPercentage: 0.5 },
-        keypress: { up: 73, left: 74, down: 75, right: 76 } // I, J, K, L
+        keypress: { up: 38, left: 37, down: 40, right: 39 } // Arrow keys
     }
     const barrierData1 = {
       id: "barrier-2",
@@ -95,7 +95,7 @@ class GameLevelSecret {
     this.classes = [
         {class: GameEnvBackground, data: background_data},
         {class: Player, data: player_data},
-        {class: Player2, data: other_data},
+        {class: Player, data: other_data},
         { class: SplineBarrier, data: barrierData1 },
         { class: SplineBarrier, data: barrierData2 },
         { class: SplineBarrier, data: barrierData3 },

@@ -1,5 +1,6 @@
 import GameObject from '@assets/js/GameEnginev1.1/essentials/GameObject.js';
 import LapTracker from './LapTracker.js';
+import LosingScreen from './Losing-Screen.js';
 import RestartPrompt from './RestartPrompt.js';
 
 // Text colour per player, in the order the cars are listed in the level (P1 red, P2 blue).
@@ -9,7 +10,8 @@ const PANEL_SIZE = { width: 190, height: 62 };
 
 /**
  * TimeLapScreen - race HUD: a compact box with the timer, each player's laps and a Restart
- * button, plus a banner with the hint before the start and the winner at the end.
+ * button, plus a banner with the hint before the start. The first car to finish triggers the
+ * losing screen for the other car and restarts the level after its countdown.
  *
  * data:
  * - totalLaps: laps to win (default 3)
@@ -30,6 +32,7 @@ class TimeLapScreen extends GameObject {
     this.lastFrameAt = null;
     this.raceStarted = false;
     this.winnerLabel = null;
+    this.losingScreen = null;
     this.restartPrompt = new RestartPrompt({ container: this.gameEnv.container, gameControl: this.gameEnv.gameControl });
     this.restartButton = this.createRestartButton();
   }
@@ -84,12 +87,20 @@ class TimeLapScreen extends GameObject {
   }
 
   trackLaps() {
-    this.getPlayers().forEach((player, index) => {
+    const players = this.getPlayers();
+    players.forEach((player, index) => {
       const center = player.getCenter();
       const normalizedCenter = { x: center.x / this.gameEnv.innerWidth, y: center.y / this.gameEnv.innerHeight };
       const justFinished = this.lapTracker.update(player, normalizedCenter);
       if (justFinished && !this.winnerLabel) {
         this.winnerLabel = this.getPlayerLabel(player, index);
+        const loser = players.find((candidate) => candidate !== player);
+        const loserName = loser?.spriteData?.name || 'Car';
+        this.losingScreen = new LosingScreen({
+          container: this.gameEnv.container,
+          gameControl: this.gameEnv.gameControl,
+          loserName
+        });
       }
       if (player.velocity && (player.velocity.x !== 0 || player.velocity.y !== 0)) {
         this.raceStarted = true;
@@ -118,7 +129,7 @@ class TimeLapScreen extends GameObject {
     }
     this.drawPanel(ctx);
     if (this.winnerLabel) {
-      this.drawBanner(ctx, `${this.winnerLabel} wins! ${this.formatTime(this.elapsedMs)}`, 'Press R to race again');
+      this.drawBanner(ctx, `${this.winnerLabel} wins! ${this.formatTime(this.elapsedMs)}`, 'Race restarts automatically');
     } else if (!this.raceStarted) {
       this.drawBanner(ctx, 'Drive right!', 'Laps count each time you cross the start/finish line');
     }
@@ -194,6 +205,7 @@ class TimeLapScreen extends GameObject {
   }
 
   destroy() {
+    this.losingScreen?.destroy();
     this.restartPrompt.destroy();
     this.restartButton.remove();
     const gameObjects = this.gameEnv && this.gameEnv.gameObjects;
